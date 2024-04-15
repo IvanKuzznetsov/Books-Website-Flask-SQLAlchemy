@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+    <h2>Все книги</h2>
+    {% for book in books %}
+        <ul>
+        <label>
+            <input type="checkbox" name="book_title" class="">
+            {{ book.title }}
+        </label>
+        <li>Дата публикации: {{ book.publication_date }}</li>
+        <li>Автор: {{ book.author }}</li>
+        <li>Аннотация: {{ book.annotation }}</li>
+        <li>
+            <a href="{{ url_for('books_by_genre', genre_id = book.genre_id) }}">Жанр: {{ book.genre.name }}</a>
+        </li>
+        </ul>
+        <hr>
+    {% endfor %}
+{% endblock %}
